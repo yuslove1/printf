@@ -1,4 +1,4 @@
-0x11. C - printf
+0x11. C - printf : first group project(author yuslove1 & Aden1ke), we're replicating the printf() fucntion from the C Standard Library.
 
 Task 0: A function that produces output according to a format.
 Task 1: Handle the following conversion specifiers:

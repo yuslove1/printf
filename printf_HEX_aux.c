@@ -1,36 +1,40 @@
 #include "main.h"
 
 /**
- * printf_HEX_aux - prints an hexgecimal number.
- * @num: number to print.
- * Return: counter.
+ * printf_HEX_aux - write a program prints an hexadecimal number.
+ * @value: number to be printed.
+ * Return: digit.
  */
-int printf_HEX_aux(unsigned int num)
+int printf_HEX_aux(unsigned int value)
 {
-	int i;
-	int *array;
-	int counter = 0;
-	unsigned int temp = num;
+	int num;
+	int *ptr;
+	int digit = 0;
+	unsigned int tmp = value;
 
-	while (num / 16 != 0)
+	while (value / 16 != 0)
 	{
-		num /= 16;
-		counter++;
+		value /= 16;
+		digit++;
 	}
-	counter++;
-	array = malloc(counter * sizeof(int));
+	digit++;
+	ptr = malloc(digit * sizeof(int));
 
-	for (i = 0; i < counter; i++)
+	num = 0;
+	while (num < digit)
 	{
-		array[i] = temp % 16;
-		temp /= 16;
+		ptr[num] = tmp % 16;
+		tmp /= 16;
+		num++;
 	}
-	for (i = counter - 1; i >= 0; i--)
+	num = counter - 1;
+	while (num >= 0)
 	{
-		if (array[i] > 9)
-			array[i] = array[i] + 7;
-		_putchar(array[i] + '0');
+		if (ptr[num] > 9)
+			ptr[num] = ptr[num] + 7;
+		_putchar(ptr[num] + '0');
+		 num--;
 	}
-	free(array);
-	return (counter);
+	free(ptr);
+	return (digit);
 }

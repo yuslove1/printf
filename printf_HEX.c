@@ -1,37 +1,41 @@
 #include "main.h"
 
 /**
- * printf_HEX - prints an hexgecimal number.
- * @val: arguments.
- * Return: counter.
+ * printf_HEX - write a program prints hexgecimal number.
+ * @value: arguments printed.
+ * Return: digit.
  */
-int printf_HEX(va_list val)
+int printf_HEX(va_list value)
 {
-	int i;
-	int *array;
-	int counter = 0;
-	unsigned int num = va_arg(val, unsigned int);
-	unsigned int temp = num;
+	int num;
+	int *ptr;
+	int digit = 0;
+	unsigned int value = va_arg(value, unsigned int);
+	unsigned int tmp = number;
 
-	while (num / 16 != 0)
+	while (number / 16 != 0)
 	{
-		num /= 16;
-		counter++;
+		number /= 16;
+		digit++;
 	}
-	counter++;
-	array = malloc(counter * sizeof(int));
+	digit++;
+	ptr = malloc(digit * sizeof(int));
 
-	for (i = 0; i < counter; i++)
+	num = 0;
+	while (num < digit)
 	{
-		array[i] = temp % 16;
-		temp /= 16;
+		ptr[num] = tmp % 16;
+		tmp /= 16;
+		 num++;
 	}
-	for (i = counter - 1; i >= 0; i--)
+	num = counter - 1;
+	while (num >= 0)
 	{
-		if (array[i] > 9)
-			array[i] = array[i] + 7;
-		_putchar(array[i] + '0');
+		if (ptr[num] > 9)
+			ptr[num] = ptr[num] + 7;
+		_putchar(ptr[num] + '0');
+		num--;
 	}
-	free(array);
-	return (counter);
+	free(ptr);
+	return (digit);
 }

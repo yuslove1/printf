@@ -1,8 +1,9 @@
 #include "main.h"
+
 /**
- * _printf - is a function that selects the correct function to print.
- * @format: identifier to look for.
- * Return: the length of the string.
+ * _printf - a function that selects the correct function to print.
+ * @format: identifier to look check.
+ * Return: the string length.
  */
 int _printf(const char * const format, ...)
 {
@@ -16,7 +17,7 @@ int _printf(const char * const format, ...)
 	};
 
 	va_list args;
-	int i = 0, j, len = 0;
+	int i = 0, j, length = 0;
 
 	va_start(args, format);
 	if (format == NULL || (format[0] == '%' && format[1] == '\0'))
@@ -30,16 +31,16 @@ Here:
 		{
 			if (m[j].id[0] == format[i] && m[j].id[1] == format[i + 1])
 			{
-				len += m[j].f(args);
+				length += m[j].f(args);
 				i = i + 2;
 				goto Here;
 			}
 			j--;
 		}
 		_putchar(format[i]);
-		len++;
+		length++;
 		i++;
 	}
 	va_end(args);
-	return (len);
+	return (length);
 }
